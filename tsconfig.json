@@ -1,0 +1,21 @@
+{
+  "exclude": ["node_modules", "dist", "scripts"],
+  "compilerOptions": {
+    "strict": true,
+    "target": "ES2015",
+    "lib": ["DOM", "ESNext", "ES2020.Promise"],
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "jsx": "react",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "noEmitOnError": true,
+  },
+  "include": [
+    "src",
+  ]
+}
