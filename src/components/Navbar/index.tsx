@@ -11,12 +11,12 @@ const langMenu = (
   </Menu>
 );
 
-const userMenu = (
-  <Menu>
-    <MenuItem>用户设置</MenuItem>
-    <MenuItem>登出</MenuItem>
-  </Menu>
-);
+// const userMenu = (
+//   <Menu>
+//     <MenuItem>用户设置</MenuItem>
+//     <MenuItem>登出</MenuItem>
+//   </Menu>
+// );
 
 const Navbar = () => {
   return (
@@ -32,15 +32,15 @@ const Navbar = () => {
             <Earth size={16} />
           </div>
         </Dropdown>
-        <ProfileMenu>
-          <Dropdown content={userMenu}>
-            <div className="user">
-              <span className="username">Annette Black</span>
-              <span className="user-email">AnnetteBlack@email.com</span>
-            </div>
-          </Dropdown>
-          <CaretDown className="caret-down" />
-        </ProfileMenu>
+        {/*<ProfileMenu>*/}
+        {/*  <Dropdown content={userMenu}>*/}
+        {/*    <div className="user">*/}
+        {/*      <span className="username">Annette Black</span>*/}
+        {/*      <span className="user-email">AnnetteBlack@email.com</span>*/}
+        {/*    </div>*/}
+        {/*  </Dropdown>*/}
+        {/*  <CaretDown className="caret-down" />*/}
+        {/*</ProfileMenu>*/}
       </NavbarRight>
     </NavbarWrapper>
   );
