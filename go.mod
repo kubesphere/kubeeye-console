@@ -3,7 +3,7 @@ module github.com/kubesphere/kubeeye-console
 go 1.17
 
 require (
-	k8s.io/apimachinery v0.23.5
+	k8s.io/apimachinery v0.23.6
 	k8s.io/apiserver v0.23.5
 	k8s.io/client-go v0.23.5
 	k8s.io/klog v1.0.0
