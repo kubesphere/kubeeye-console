@@ -1,4 +1,4 @@
-# KubeSphere Console
+# KubeEye Console
 
 [![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/kubesphere/console)
 ![](https://github.com/kubesphere/console/workflows/Main/badge.svg)
@@ -9,7 +9,7 @@ KubeEye console is the web interface for [KubeEye](https://github.com/kubesphere
 
 ## Getting Started
 
-Console should be always used with KubeEye, you can either use [Kubekey](https://github.com/kubesphere/kubekey) or [ks-installer](https://github.com/kubesphere/ks-installer) to create a KubeSphere cluster.  
+Console should be always used with KubeEye, To install kubeeye, please refer to this [README](https://github.com/kubesphere/kubeeye)
 The following will show you how to build console from source code.
 
 
@@ -24,11 +24,8 @@ npm install -g yarn@1.22.4
 ```
 The minimum version required is 1.22.4, but you can use a newer version.
 
-#### [Optional]Docker
-This is optional. If you just want to test and build on your local environment, there is no need to install docker. Otherwise, you need to install it.
-[Install on Mac](https://docs.docker.com/desktop/mac/install/)
-[Install on Windows](https://docs.docker.com/desktop/windows/install/)
-[Install on Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
+#### Go
+We use [Golang](https://go.dev/) as the forwarding layer, If you don't have go environment, please [set it up](https://go.dev/doc/install).
 
 ## How to build
 
@@ -37,42 +34,25 @@ Clone the repository, and run `yarn && yarn build`
 git clone https://github.com/kubesphere/kubeeye-console.git
 cd kubeeye-console/
 yarn && yarn build
-npm run serve
+go build web.go
+./web
 ```
 > If you have trouble downloading the dependencies, try the following
 >
 > `yarn config set registry https://registry.npmmirror.com`
 
 
-After `npm run serve`, you should see the output like the following
+After `./web`, you should see the output like the following
 
 ```
-> kubesphere-console@master serve
-> NODE_ENV=production node server/server.js
-
-Dashboard app running at port 8000
+> I0424 16:10:52.142951     332 web.go:122] Start listening on 9088
 ```
-Now, console is up and running. But since there is no backed KubeSphere cluster, you shouldn't be able to login.
+Now, console is up and running.
 
 ## How to debug
-A KubeSphere cluster is required to start debugging. You can refer to [Installation](https://github.com/kubesphere/kubesphere#installation) to create a KubeSphere cluster.
+A KubeEye backend is required to start debugging. You can refer to [Installation](https://github.com/kubesphere/kubeeye) to create install KubeEye.
 
-Once the cluster is up, you replace the address of `ks-apiserver` in `server/config.yaml` with your real address. You can refer to [access KubeSphere apiserver](docs/access-backend.md) to expose your cluster `ks-apiserver`.
-```
-  # backend service gateway server
-  apiServer:
-    clientID: kubesphere
-    clientSecret: kubesphere
-    url: http://ks-apiserver
-    wsUrl: ws://ks-apiserver
-```
-
-## How to build container image
-
-Just run the following command with your real `REPO` address.
-```
-REPO=yourawesomerepo make container
-```
+Once the kubeeye is up, you run `yarn dev` to start the development environment.
 
 ## How to submit a PR
 
