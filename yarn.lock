@@ -1272,15 +1272,16 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
-"@kubed/components@^0.0.34":
-  version "0.0.34"
-  resolved "https://registry.yarnpkg.com/@kubed/components/-/components-0.0.34.tgz#201477d3218d6290ac3b54060ca088341b0d3c84"
-  integrity sha512-LyVnDxQW/ZczQ1MYLZsZts7QPE2728iGtnmatRau764PSHbuMS2OVEpskSe+YxZdkBvm7gXL2EPooE9CNU42Nw==
+"@kubed/components@^0.0.35":
+  version "0.0.35"
+  resolved "https://registry.yarnpkg.com/@kubed/components/-/components-0.0.35.tgz#19bbca8e37d91055f675897f961e636f27c8d357"
+  integrity sha512-e9RiWnfCEpoB7BfXqbAOIJ/r+/STpJkLdHsLe/unAtBOegWxJsEjg4qgDjCklGwPqaF/MUSDprEn/1X6DiOWuQ==
   dependencies:
     "@tippyjs/react" "^4.2.5"
     classnames "^2.3.1"
     dayjs "^1.10.7"
     lodash "^4.17.21"
+    rc-collapse "^3.2.0"
     rc-dialog "^8.6.0"
     rc-drawer "^4.4.3"
     rc-field-form "^1.21.2"
@@ -7327,6 +7328,17 @@ rc-align@^4.0.0:
     rc-util "^5.3.0"
     resize-observer-polyfill "^1.5.1"
 
+rc-collapse@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/rc-collapse/-/rc-collapse-3.2.0.tgz#edfa2f674ec5188f79cc08318b3022abc299e38d"
+  integrity sha512-TQx4HihWeglsNUz7blY3PaXwr/6cKuuWH4znUfSKTVCuHUKd7c0DitFd+LUkKXdalT8kcElhkVimNzpZOvPESw==
+  dependencies:
+    "@babel/runtime" "^7.10.1"
+    classnames "2.x"
+    rc-motion "^2.3.4"
+    rc-util "^5.2.1"
+    shallowequal "^1.1.0"
+
 rc-dialog@^8.6.0:
   version "8.7.0"
   resolved "https://registry.yarnpkg.com/rc-dialog/-/rc-dialog-8.7.0.tgz#7741f7aae73b7df3a880ad76b48aab62edbcccc7"
@@ -7372,6 +7384,15 @@ rc-motion@^2.0.0, rc-motion@^2.0.1, rc-motion@^2.3.0, rc-motion@^2.4.4:
     "@babel/runtime" "^7.11.1"
     classnames "^2.2.1"
     rc-util "^5.19.2"
+
+rc-motion@^2.3.4:
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/rc-motion/-/rc-motion-2.5.1.tgz#3eceb7d891079c0f67a72639d30e168b91839e03"
+  integrity sha512-h3GKMjFJkK+4z6fNfVlIMrb7WFCZsreivVvHOBb38cKcpKDx5g3kpHwn5Ekbo1+g0nnC02Dtap2trfCAPGxllw==
+  dependencies:
+    "@babel/runtime" "^7.11.1"
+    classnames "^2.2.1"
+    rc-util "^5.21.0"
 
 rc-overflow@^1.0.0:
   version "1.2.4"
@@ -7435,6 +7456,15 @@ rc-util@^5.0.7, rc-util@^5.15.0, rc-util@^5.19.2, rc-util@^5.3.0, rc-util@^5.4.0
   version "5.19.3"
   resolved "https://registry.yarnpkg.com/rc-util/-/rc-util-5.19.3.tgz#5f6aa854820f6d5824451d80771035b013eaf6d8"
   integrity sha512-S28epi9E2s7Nir05q8Ffl3hzDLwkavTGi0PGH1cTqCmkpG1AeBEuZgQDpksYeU6IgHcds5hWIPE5PUcdFiZl8w==
+  dependencies:
+    "@babel/runtime" "^7.12.5"
+    react-is "^16.12.0"
+    shallowequal "^1.1.0"
+
+rc-util@^5.2.1, rc-util@^5.21.0:
+  version "5.21.2"
+  resolved "https://registry.yarnpkg.com/rc-util/-/rc-util-5.21.2.tgz#fa23277ba84e5561af2febdca64de3fc2b3e1528"
+  integrity sha512-QuuZ2tKMScGtxSx3rLzgPGGDZm/np7phMqA7OcDidSf44abvSk+AdtdD7ZvQPvCEtdC6nCSI5tEVnUaYjjD9/w==
   dependencies:
     "@babel/runtime" "^7.12.5"
     react-is "^16.12.0"

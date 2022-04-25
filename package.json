@@ -117,7 +117,7 @@
     "webpackbar": "^5.0.0-3"
   },
   "dependencies": {
-    "@kubed/components": "^0.0.34",
+    "@kubed/components": "^0.0.35",
     "@kubed/hooks": "^0.0.9",
     "@kubed/icons": "^0.0.2",
     "@kubed/stook": "^0.0.4",

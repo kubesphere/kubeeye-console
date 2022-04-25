@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, StatusDot, Tabs, Tab, Empty } from '@kubed/components';
+import { Card, StatusDot, Tabs, Tab, Empty, Collapse } from '@kubed/components';
 import { Project } from '@kubed/icons';
 import { useStore } from '@kubed/stook';
 import useInspectionStore from '../../stores/inspection';
@@ -12,10 +12,9 @@ import {
   StatusContent,
   ClusterInfoContent,
   MainContent,
-  InspectionList,
 } from './styles';
 
-import InspectionItem from './InspectionItem';
+import InspectionList from './List';
 import OverviewChart from './OverviewChart';
 import Drawer from './Drawer';
 
@@ -112,11 +111,7 @@ const Inspection = () => {
                   image={<Project size={48} />}
                 />
               ) : (
-                <InspectionList>
-                  {clusterData.map((item: any, index: number) => (
-                    <InspectionItem key={index} info={item} />
-                  ))}
-                </InspectionList>
+                <InspectionList data={clusterData} />
               )}
             </Card>
           </Tab>
@@ -130,11 +125,7 @@ const Inspection = () => {
                   image={<Project size={48} />}
                 />
               ) : (
-                <InspectionList>
-                  {projectData.map((resultInfo: any, index: number) => (
-                    <InspectionItem key={index} info={resultInfo} />
-                  ))}
-                </InspectionList>
+                <InspectionList data={projectData} />
               )}
             </Card>
           </Tab>
