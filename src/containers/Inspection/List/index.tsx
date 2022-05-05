@@ -1,7 +1,7 @@
 import React from 'react';
 import { Entity, Field, StatusDot, Progress, Collapse } from '@kubed/components';
 import { Cluster, CaretRight, Shield } from '@kubed/icons';
-// import { useStore } from '@kubed/stook';
+import { useStore } from '@kubed/stook';
 import { groupBy } from 'lodash';
 
 import { ListContainer, ExpandContainer, ExpandItem } from './styles';
@@ -20,12 +20,10 @@ const colorMap: Record<string, string> = {
 };
 
 const InspectionList: React.FC<ListProps> = ({ data }) => {
-  // const [, setDrawerOpen] = useStore('DrawerOpen');
+  const [, setDrawerOpen] = useStore('DrawerOpen');
   const openDrawer = (e: React.SyntheticEvent) => {
     e.stopPropagation();
-    return;
-    // Disable it because there is no content
-    // setDrawerOpen(true);
+    setDrawerOpen(true);
   };
 
   const renderItemHeader = (itemData: any) => {
