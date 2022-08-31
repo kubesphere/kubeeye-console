@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom';
 import Navbar from '../../Navbar';
 
 const Main = styled.div`
-  padding-top: 68px;
+  padding-top: 84px;
   min-width: 1164px;
 `;
 
