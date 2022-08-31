@@ -119,8 +119,9 @@
   "dependencies": {
     "@kubed/components": "^0.0.35",
     "@kubed/hooks": "^0.0.9",
-    "@kubed/icons": "^0.0.2",
+    "@kubed/icons": "^0.0.4",
     "@kubed/stook": "^0.0.4",
+    "axios": "^0.27.2",
     "classnames": "^2.2.6",
     "dayjs": "^1.10.7",
     "lodash": "^4.17.20",
