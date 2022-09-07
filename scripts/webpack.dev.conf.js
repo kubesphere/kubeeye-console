@@ -91,8 +91,12 @@ const webpackDevConfig = merge(baseConfig, {
     // stats: 'errors-only',
     proxy: {
       '/apis': {
-        target: 'ws://103.61.38.113:9088',
+        target: 'ws://localhost:9088',
         ws: true,
+        changeOrigin: true,
+      },
+      '/api': {
+        target: 'http://localhost:9088',
         changeOrigin: true,
       }
     }
