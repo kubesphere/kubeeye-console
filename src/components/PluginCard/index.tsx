@@ -15,6 +15,7 @@ import {
 
 interface Props extends PluginInfo {
   installStateSwitchHandler: (name: string) => void;
+  triggerAuditHandler: (name: string) => void;
   toDetail: (name: string) => void;
 }
 
@@ -24,6 +25,7 @@ const PluginCard = ({
   installState,
   lastUpdateDate,
   installStateSwitchHandler,
+  triggerAuditHandler,
   toDetail,
 }: Props) => {
   const buttonRef = useRef<HTMLDivElement>(null);
@@ -55,7 +57,7 @@ const PluginCard = ({
           ) : (
             <DropdownMenu
               triggerAuditHandler={() => {
-                console.log('triggerAudit');
+                triggerAuditHandler(name);
               }}
               uninstallHandler={() => {
                 installStateSwitchHandler(name);

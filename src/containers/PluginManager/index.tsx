@@ -188,6 +188,17 @@ const PluginManager = () => {
     }
   };
 
+  const triggerAuditHandler = (pluginName: string) => {
+    axios
+      .get(`/api/v1/namespaces/kubeeye-system/services/${pluginName}:api/proxy/start`)
+      .then(() => {
+        notify.success('启动巡检成功');
+      })
+      .catch(() => {
+        notify.error('启动巡检失败');
+      });
+  };
+
   const getPluginInfo = (name?: string) => {
     return name ? data.get(name) : Array.from(data.values());
   };
@@ -199,7 +210,7 @@ const PluginManager = () => {
       </CenterWrapper>
     );
   } else {
-    return <Outlet context={{ getPluginInfo, installStateSwitchHandler }} />;
+    return <Outlet context={{ getPluginInfo, installStateSwitchHandler, triggerAuditHandler }} />;
   }
 };
 

@@ -7,7 +7,8 @@ import { ContentWrapper, ListWrapper, ItemWrapper, TitleWrapper, Divider } from 
 import { CenterWrapper, Wrapper } from '../styles';
 
 const PluginList = () => {
-  const { getPluginInfo, installStateSwitchHandler } = useOutletContext<ContextType>();
+  const { getPluginInfo, installStateSwitchHandler, triggerAuditHandler } =
+    useOutletContext<ContextType>();
   const plugins = getPluginInfo() as PluginInfo[];
   const installedPlugins: React.ReactNode[] = [];
   const uninstalledPlugins: React.ReactNode[] = [];
@@ -46,6 +47,7 @@ const PluginList = () => {
             installState={installState}
             lastUpdateDate={lastUpdateDate}
             installStateSwitchHandler={installStateSwitchHandler}
+            triggerAuditHandler={triggerAuditHandler}
             toDetail={toDetail}
           />
         </ItemWrapper>,
@@ -63,6 +65,7 @@ const PluginList = () => {
             installState={installState}
             lastUpdateDate={lastUpdateDate}
             installStateSwitchHandler={installStateSwitchHandler}
+            triggerAuditHandler={triggerAuditHandler}
             toDetail={toDetail}
           />
         </ItemWrapper>,

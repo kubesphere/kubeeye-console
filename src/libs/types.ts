@@ -27,4 +27,5 @@ export type LocationStateType = {
 export type ContextType = {
   getPluginInfo: (name?: string) => PluginInfo[] | PluginInfo | undefined;
   installStateSwitchHandler: (name: string) => void;
+  triggerAuditHandler: (name: string) => void;
 };

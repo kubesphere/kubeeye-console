@@ -20,7 +20,8 @@ import {
 } from './styles';
 
 const PluginDetail = () => {
-  const { installStateSwitchHandler, getPluginInfo } = useOutletContext<ContextType>();
+  const { installStateSwitchHandler, getPluginInfo, triggerAuditHandler } =
+    useOutletContext<ContextType>();
   const { pluginname } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
@@ -63,7 +64,13 @@ const PluginDetail = () => {
             </PluginInfoWrapper>
 
             {pluginInfo.installState === 'installed' ? (
-              <Button color="secondary" shadow>
+              <Button
+                color="secondary"
+                shadow
+                onClick={() => {
+                  triggerAuditHandler(pluginInfo.name);
+                }}
+              >
                 启动巡检
               </Button>
             ) : null}
