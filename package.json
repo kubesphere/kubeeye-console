@@ -45,7 +45,7 @@
     "@babel/polyfill": "^7.12.1",
     "@babel/preset-env": "^7.15.8",
     "@babel/preset-react": "^7.14.5",
-    "@babel/runtime": "^7.15.4",
+    "@babel/runtime": "7.19.0",
     "@kubed/stook-devtools": "^0.0.1",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.1",
     "@types/lodash": "^4.14.176",
@@ -117,8 +117,8 @@
     "webpackbar": "^5.0.0-3"
   },
   "dependencies": {
-    "@kubed/components": "^0.0.35",
-    "@kubed/hooks": "^0.0.9",
+    "@kubed/components": "0.0.44",
+    "@kubed/hooks": "0.0.10",
     "@kubed/icons": "^0.0.4",
     "@kubed/stook": "^0.0.4",
     "axios": "^0.27.2",
