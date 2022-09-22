@@ -24,3 +24,11 @@ export const TitleWrapper = styled.div`
 export const Divider = styled.div`
   height: calc(32px - 19px);
 `;
+export const OverLayer = styled.div`
+  position: fixed;
+  top: 84px;
+  left: 0;
+  z-index: 99;
+  height: calc(100vh - 84px);
+  width: 100vw;
+`;
