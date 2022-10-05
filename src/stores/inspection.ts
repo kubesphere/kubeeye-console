@@ -56,7 +56,8 @@ const useInspectionStore = () => {
 
     const wsUrl = `${getWebSocketProtocol(window.location.protocol)}://${
       window.location.host
-    }/apis/kubeeye.kubesphere.io/v1alpha1/watch/namespaces/default/clusterinsights/${name}`;
+    }/apis/kubeeye.kubesphere.io/v1alpha1/clusterinsights?\
+fieldSelector=metadata.name=${name}&watch=true`;
     wsClient = new SocketClient(wsUrl, {
       onmessage: receive,
     });
