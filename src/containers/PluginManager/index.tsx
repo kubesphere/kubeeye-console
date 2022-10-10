@@ -4,7 +4,7 @@ import { useReducer, useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { notify, Loading } from '@kubed/components';
 import { CenterWrapper } from './styles';
-import { PluginInfo, Action } from '../../libs/types';
+import { PluginInfo, Action, InstallState } from '../../libs/types';
 import { get } from 'lodash';
 import { getWebSocketProtocol } from '../../libs/utils';
 
@@ -77,6 +77,14 @@ const PluginManager = () => {
   const [data, dispatch] = useReducer(reducer, new Map<string, PluginInfo>());
   const [loading, setLoading] = useState(true);
 
+  const getInstallState = (state: string, spec: boolean): InstallState => {
+    if (spec) {
+      return state === 'installed' ? 'installed' : 'installing';
+    } else {
+      return state === 'uninstalled' ? 'uninstalled' : 'uninstalling';
+    }
+  };
+
   useEffect(() => {
     axios
       .get('/apis/kubeeyeplugins.kubesphere.io/v1alpha1/pluginsubscriptions?limit=500')
@@ -85,7 +93,7 @@ const PluginManager = () => {
           const pluginInfo: PluginInfo = {
             name: item.metadata.name,
             introduction: '暂无简介',
-            installState: item.status.state ? item.status.state : 'uninstalled',
+            installState: getInstallState(item.status?.state, item.spec.enabled),
             lastUpdateDate:
               item.metadata.managedFields[item.metadata.managedFields.length - 1].time.split(
                 'T',
