@@ -1,8 +1,9 @@
 import React from 'react';
 import axios from 'axios';
-import { useReducer, useEffect, useState } from 'react';
+import { useReducer, useEffect, useState, useRef } from 'react';
 import { Outlet } from 'react-router-dom';
 import { notify, Loading } from '@kubed/components';
+import { useUnmount } from '@kubed/hooks';
 import { CenterWrapper } from './styles';
 import { PluginInfo, Action, InstallState } from '../../libs/types';
 import { get } from 'lodash';
@@ -76,6 +77,34 @@ async function updatePluginCR(name: string, enabled: boolean, resourceVersion: s
 const PluginManager = () => {
   const [data, dispatch] = useReducer(reducer, new Map<string, PluginInfo>());
   const [loading, setLoading] = useState(true);
+  const promiseCancelfnRef = useRef<() => void>();
+
+  const makeCancelablePromise = (promise: Promise<string>) => {
+    let hasCanceled = false;
+    const wrappedPromise: Promise<string> = new Promise((resolve, reject) => {
+      promise
+        .then(val => {
+          if (!hasCanceled) {
+            resolve(val);
+          }
+        })
+        .catch(() => {
+          if (!hasCanceled) {
+            reject();
+          }
+        });
+    });
+
+    promiseCancelfnRef.current = () => {
+      hasCanceled = true;
+    };
+
+    return wrappedPromise;
+  };
+
+  useUnmount(() => {
+    promiseCancelfnRef.current?.();
+  });
 
   const getInstallState = (state: string, spec: boolean): InstallState => {
     if (spec) {
@@ -111,7 +140,7 @@ const PluginManager = () => {
           ) {
             const expectState =
               pluginInfo.installState === 'installing' ? 'installed' : 'uninstalled';
-            watch(pluginInfo.name, pluginInfo.resourceVersion!, expectState)
+            makeCancelablePromise(watch(pluginInfo.name, pluginInfo.resourceVersion!, expectState))
               .then(resourceVersion => {
                 dispatch({
                   type: 'UPDATE',
@@ -153,7 +182,7 @@ const PluginManager = () => {
         type: 'UPDATE',
         payload: { name: pluginName, installState: 'uninstalling' },
       });
-      updatePluginCR(pluginName, false, resourceVersion)
+      makeCancelablePromise(updatePluginCR(pluginName, false, resourceVersion))
         .then(newResourceVersion => {
           dispatch({
             type: 'UPDATE',
@@ -174,7 +203,7 @@ const PluginManager = () => {
         });
     } else if (installState === 'uninstalled') {
       dispatch({ type: 'UPDATE', payload: { name: pluginName, installState: 'installing' } });
-      updatePluginCR(pluginName, true, resourceVersion)
+      makeCancelablePromise(updatePluginCR(pluginName, true, resourceVersion))
         .then(newResourceVersion => {
           dispatch({
             type: 'UPDATE',
