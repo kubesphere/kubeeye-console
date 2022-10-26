@@ -15,7 +15,7 @@ module.exports = {
     commonjs: true,
     browser: true,
   },
-  extends: ['airbnb-typescript', 'plugin:prettier/recommended', 'prettier/react'],
+  extends: ['airbnb-typescript','prettier/react','prettier/@typescript-eslint','plugin:prettier/recommended'],
   plugins: ['prettier', '@typescript-eslint', 'react', 'babel', 'promise', 'import'],
   settings: {
     'import/resolver': {
