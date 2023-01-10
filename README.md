@@ -6,7 +6,6 @@
 
 KubeEye console is the web interface for [KubeEye](https://github.com/kubesphere/kubeeye).
 
-
 ## Getting Started
 
 Console should be always used with KubeEye, To install kubeeye, please refer to this [README](https://github.com/kubesphere/kubeeye)
@@ -53,6 +52,12 @@ Now, console is up and running.
 A KubeEye backend is required to start debugging. You can refer to [Installation](https://github.com/kubesphere/kubeeye) to create install KubeEye.
 
 Once the kubeeye is up, you run `yarn dev` to start the development environment.
+
+> If you deploy [KubeEye](https://github.com/kubesphere/kubeeye) and [KubeEye-console](https://github.com/kubesphere/kubeeye-console) on different clusters, you need to copy the `$HOME/.kube/config` file on the KubeEye cluster to the `$HOME/.kube/config` location of the KubeEye-console cluster
+> 
+> Start the `node` and `go` services at the same time
+> 
+>  `yarn dev & go run web.go`
 
 ## How to submit a PR
 
